@@ -1,0 +1,23 @@
+{
+  "development": {
+    "username": "admingoogleform",
+    "password": "root",
+    "database": "googleform",
+    "host": "127.0.0.1",
+    "dialect": "postgres"
+  },
+  "test": {
+    "username": "admingoogleform",
+    "password": "root",
+    "database": "googleform",
+    "host": "127.0.0.1",
+    "dialect": "postgres"
+  },
+  "production": {
+    "username": "admingoogleform",
+    "password": "root",
+    "database": "googleform",
+    "host": "127.0.0.1",
+    "dialect": "postgres"
+  }
+}
