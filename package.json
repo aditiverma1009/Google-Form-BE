@@ -4,7 +4,7 @@
   "main": "index.js",
   "scripts": {
     "test": "jest --coverage",
-    "start": "NODE_ENV=development sequelize db:migrate && node server.js"
+    "start": "NODE_ENV=development sequelize db:migrate && nodemon server.js"
   },
   "author": "",
   "license": "ISC",
