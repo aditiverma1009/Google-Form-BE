@@ -15,7 +15,8 @@ const createForm = (formTitle, quesArray) => Models.forms.create({
   });
   return quesArrayEditted;
 }).then(allQuesArray => Models.questions.bulkCreate(allQuesArray))
-  .then(() => 'true');
+  .then(() => true)
+  .catch(() => false);
 
 
 module.exports = createForm;
