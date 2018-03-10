@@ -12,17 +12,17 @@ module.exports = (sequelize, DataTypes) => {
       },
     },
     {
-        scopes: {
-            allAnswers: function (value) {
-                return {
-                  where: {
-                    questionId: {
-                      [Op.eq]: value
-                    },
-                  },
-                };
-              },          
+      scopes: {
+        allAnswers(value) {
+          return {
+            where: {
+              questionId: {
+                [Op.eq]: value,
+              },
+            },
+          };
         },
+      },
     },
     {},
   ); questions.associate = function (models) {
@@ -30,8 +30,5 @@ module.exports = (sequelize, DataTypes) => {
   };
 
 
-
   return questions;
 };
-
-models.sequelize.sync().then(function () {
