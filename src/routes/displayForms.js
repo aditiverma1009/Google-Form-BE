@@ -1,10 +1,13 @@
 const displayForms = require('../helper/displayForms');
 
 const displayFormsHandler = (request, response) => {
-  displayForms().then(allForms => response({
-    code: 200,
-    allForms,
-  })).catch(() => response({
+  displayForms().then((allForms) => {
+    // console.log(allForms);
+    response({
+      code: 200,
+      allForms,
+    });
+  }).catch(() => response({
     code: 500,
   }));
 };

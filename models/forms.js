@@ -29,6 +29,9 @@ module.exports = (sequelize, DataTypes) => {
   forms.findAllObjects = options => forms.findAll({
     where: options,
   });
+  forms.findAllObjectsOrder = order => forms.findAll({
+    order,
+  });
   forms.findAllObjectsNoWhere = () => forms.findAll();
 
   forms.associate = models => forms.hasMany(models.questions);

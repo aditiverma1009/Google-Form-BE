@@ -15,8 +15,8 @@ module.exports = (sequelize, DataTypes) => {
     where: options,
   });
   answers.findAllObjectsLimitOrder = (options, limit, order) => answers.findAll({
-    where: options,
-    limit,
+    where: { options },
+    limit: { limit },
     order,
   });
   answers.findAllObjectsNoWhere = () => answers.findAll();

@@ -1,8 +1,6 @@
 const Models = require('../../models');
 
-const displayForms = () => Models.forms.findAll({
-  order: [['createdAt', 'DESC']],
-});
+const displayForms = () => Models.forms.findAllObjectsOrder([['createdAt', 'DESC']]);
 
 
 module.exports = displayForms;
