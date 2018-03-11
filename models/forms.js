@@ -9,29 +9,25 @@ module.exports = (sequelize, DataTypes) => {
     'forms', {
       formtitle: DataTypes.STRING,
     },
-    {
-      scopes: {
-        allQuestions: {
-          include: [
-            { model: Models.questions },
-          ],
-        },
-      },
-    },
     {},
   );
 
   forms.createObject = values => forms.create(values);
+
   forms.bulkCreateObjects = records => forms.bulkCreate(records);
+
   forms.destroyAllObjects = () => forms.destroy({
     truncate: true,
   });
+
   forms.findAllObjects = options => forms.findAll({
     where: options,
   });
+
   forms.findAllObjectsOrder = order => forms.findAll({
     order,
   });
+
   forms.findAllObjectsNoWhere = () => forms.findAll();
 
   forms.associate = models => forms.hasMany(models.questions);

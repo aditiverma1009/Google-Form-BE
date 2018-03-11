@@ -1,12 +1,16 @@
 const Models = require('../../models');
 
-const DeletedProjects = Models.forms.scope('deleted');
-Project.scope('random', { method: ['accessLevel', 19] }).findAll();
-
-const showFormFields = () => {
+const showFormFields = (formid) => {
+  const formidInt = Number(formid);
 
 
+  return Models.forms.findAll({
+    where: {
+      id: formidInt,
+    },
+    include: [{
+      model: Models.questions,
+    }],
+  });
 };
-
-
 module.exports = showFormFields;
