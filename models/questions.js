@@ -1,7 +1,7 @@
 const Sequelize = require('sequelize');
 
-const { Op } = Sequelize;
-
+// const { Op } = Sequelize;
+const Models = require('./answers');
 
 module.exports = (sequelize, DataTypes) => {
   const questions = sequelize.define(
@@ -16,21 +16,28 @@ module.exports = (sequelize, DataTypes) => {
     },
     {
       scopes: {
-        allAnswers(value) {
-          return {
-            where: {
-              questionId: {
-                [Op.eq]: value,
-              },
-            },
-          };
+        allAnswers: {
+          include: [
+            { model: Models.answers },
+          ],
         },
       },
     },
     {},
-  ); questions.associate = function (models) {
-    questions.hasMany(models.answers);
-  };
+  );
+
+  questions.createObject = values => questions.create(values);
+  questions.bulkCreateObjects = records => questions.bulkCreate(records);
+  questions.destroyAllObjects = () => questions.destroy({
+    truncate: true,
+  });
+  questions.findAllObjects = options => questions.findAll({
+    where: options,
+  });
+  questions.findAllObjectsNoWhere = () => questions.findAll();
+
+
+  questions.associate = models => questions.hasMany(models.answers);
 
 
   return questions;

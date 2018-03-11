@@ -5,8 +5,23 @@ module.exports = (sequelize, DataTypes) => {
     questionId: DataTypes.INTEGER,
     anstext: DataTypes.STRING,
   }, {});
-  answers.associate = function (models) {
 
-  };
+  answers.createObject = values => answers.create(values);
+  answers.bulkCreateObjects = records => answers.bulkCreate(records);
+  answers.destroyAllObjects = () => answers.destroy({
+    truncate: true,
+  });
+  answers.findAllObjects = options => answers.findAll({
+    where: options,
+  });
+  answers.findAllObjectsLimitOrder = (options, limit, order) => answers.findAll({
+    where: options,
+    limit,
+    order,
+  });
+  answers.findAllObjectsNoWhere = () => answers.findAll();
+
+
+  answers.associate = () => null;
   return answers;
 };
