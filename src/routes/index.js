@@ -1,13 +1,10 @@
-const createForm = require('./createForm');
-const displayForms = require('./displayForms');
-const showFormFields = require('./showFormFields');
-
-const getHelloWorld = (request, response) => {
-  response('On root.');
-};
+const postForm = require('./postForm');
 
 module.exports = [{
   path: '/',
   method: 'GET',
-  handler: getHelloWorld,
-}].concat(createForm).concat(displayForms).concat(showFormFields);
+  handler(request, response) {
+    response('On root.');
+  },
+}].concat(postForm);
+

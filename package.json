@@ -3,8 +3,8 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "test": "jest --coverage",
-    "start": "NODE_ENV=development sequelize db:migrate && nodemon server.js"
+    "test": "NODE_ENV=test sequelize db:migrate:undo:all && NODE_ENV=test sequelize db:migrate && NODE_ENV=test jest --coverage --notify --forceExit --runInBand",
+    "start": "NODE_ENV=development sequelize && node server.js && nodemon server.js"
   },
   "author": "",
   "license": "ISC",

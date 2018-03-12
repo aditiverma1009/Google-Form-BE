@@ -8,7 +8,9 @@ const showFormFieldsHandler = (request, response) => {
       code: 200,
       allQuestionsWithFormTitle,
     });
-  });
+  }).catch(() => response({
+    code: 500,
+  }));
 };
 
 module.exports = [{

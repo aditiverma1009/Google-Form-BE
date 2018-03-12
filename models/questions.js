@@ -31,6 +31,9 @@ module.exports = (sequelize, DataTypes) => {
   questions.destroyAllObjects = () => questions.destroy({
     truncate: true,
   });
+
+  questions.countObjects = () => questions.count();
+
   questions.findAllObjects = options => questions.findAll({
     where: options,
   });

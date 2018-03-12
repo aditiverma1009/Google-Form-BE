@@ -12,13 +12,17 @@ module.exports = (sequelize, DataTypes) => {
     {},
   );
 
-  forms.createObject = values => forms.create(values);
+  forms.createObject = values => forms.create({
+    formtitle: values,
+  });
 
   forms.bulkCreateObjects = records => forms.bulkCreate(records);
 
   forms.destroyAllObjects = () => forms.destroy({
     truncate: true,
   });
+
+  forms.countObjects = () => forms.count();
 
   forms.findAllObjects = options => forms.findAll({
     where: options,
@@ -31,6 +35,7 @@ module.exports = (sequelize, DataTypes) => {
   forms.findAllObjectsNoWhere = () => forms.findAll();
 
   forms.associate = models => forms.hasMany(models.questions);
+
 
   return forms;
 };
