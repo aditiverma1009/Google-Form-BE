@@ -5,7 +5,7 @@ const optionIncorrectUsername = {
   method: 'POST',
   url: '/form/create',
   payload: {
-    formTitle: 123,
+    formTitle: 11,
     quesArray: JSON.stringify([{ questext: 'how are you', quesisreq: true, enum_questions_questype: 'shortans' }]),
   },
 };
@@ -58,7 +58,7 @@ describe('Testcase for postForm server', () => {
 
 describe('Testcase for database entries during postForm', () => {
   beforeAll(done => Models.forms.destroyAllObjects().then(() => done()));
-  // afterAll(done => Models.forms.destroyAllObjects().then(() => done()));
+  afterAll(done => Models.forms.destroyAllObjects().then(() => done()));
 
 
   test('Test for populating forms table', (done) => {

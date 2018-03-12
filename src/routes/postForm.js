@@ -18,7 +18,8 @@ module.exports = [{
   config: {
     validate: {
       payload: {
-        formTitle: Joi.string().min(6).max(200).required(),
+        formTitle: Joi.string().min(3).max(200)
+          .required(),
         quesArray: Joi.string().required(),
       },
     },
