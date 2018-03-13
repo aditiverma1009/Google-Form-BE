@@ -1,13 +1,7 @@
-const Sequelize = require('sequelize');
-
-const Models = require('./questions');
-
-// const { Op } = Sequelize;
-
 module.exports = (sequelize, DataTypes) => {
   const forms = sequelize.define(
     'forms', {
-      formtitle: DataTypes.STRING,
+      formtitle: { type: DataTypes.STRING, unique: true },
     },
     {},
   );
@@ -16,30 +10,17 @@ module.exports = (sequelize, DataTypes) => {
     formtitle: values,
   });
 
-  forms.bulkCreateObjects = records => forms.bulkCreate(records);
-
   forms.destroyAllObjects = () => forms.destroy({
     truncate: true,
   });
 
   forms.countObjects = () => forms.count();
 
-  forms.findAllObjects = options => forms.findAll({
-    where: options,
-  });
-
-  forms.findOneObject = options => forms.findOne({
-    where: options,
-  });
-
   forms.findAllObjectsOrder = order => forms.findAll({
     order,
   });
 
-  forms.findAllObjectsNoWhere = () => forms.findAll();
-
   forms.associate = models => forms.hasMany(models.questions);
-
 
   return forms;
 };

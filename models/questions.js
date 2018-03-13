@@ -26,19 +26,15 @@ module.exports = (sequelize, DataTypes) => {
     {},
   );
 
-  questions.createObject = values => questions.create(values);
-  questions.bulkCreateObjects = records => questions.bulkCreate(records);
   questions.destroyAllObjects = () => questions.destroy({
     truncate: true,
   });
 
   questions.countObjects = () => questions.count();
 
-  questions.findAllObjects = options => questions.findAll({
-    where: options,
+  questions.findOneObjectWhere = value => questions.findOne({
+    where: { id: value },
   });
-  questions.findAllObjectsNoWhere = () => questions.findAll();
-
 
   questions.associate = models => questions.hasMany(models.answers);
 

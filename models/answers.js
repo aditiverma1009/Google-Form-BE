@@ -8,20 +8,14 @@ module.exports = (sequelize, DataTypes) => {
 
   answers.createObject = values => answers.create(values);
   answers.bulkCreateObjects = records => answers.bulkCreate(records);
-  answers.destroyAllObjects = () => answers.destroy({
-    truncate: true,
-  });
-  answers.findAllObjects = options => answers.findAll({
-    where: options,
-  });
-  answers.findAllObjectsLimitOrder = (options, limit, order) => answers.findAll({
-    where: { options },
-    limit: { limit },
-    order,
-  });
-  answers.findAllObjectsNoWhere = () => answers.findAll();
+  answers.destroyAllObjects = () => answers.destroy({ truncate: true });
 
+  answers.associate = models => answers.belongsTo(models.questions);
 
-  answers.associate = () => null;
   return answers;
 };
+
+
+// questions.destroyAllObjects = () => questions.destroy({
+//   truncate: true,
+// });

@@ -1,7 +1,7 @@
 const displayFormsLib = require('../lib/displayFormsLib');
 
 module.exports = [{
-  path: '/forms/display',
+  path: '/forms/all',
   method: 'GET',
   handler(request, response) {
     return displayFormsLib.displayForms().then(result => response({

@@ -10,11 +10,11 @@ const createFormsAndQues = (formTitle, quesArrayJSON) => Models.forms.create({
 const createForm = (formTitle, quesArray) => {
   const quesArrayJSON = JSON.parse(quesArray);
   console.log(quesArrayJSON);
-  // return Models.forms.create({ formtitle: formTitle });
   return createFormsAndQues(formTitle, quesArrayJSON);
 };
 
 module.exports = {
   createForm,
+  createFormsAndQues,
 };
 

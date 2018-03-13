@@ -16,5 +16,6 @@ const displayForm = (formid) => {
 
 module.exports = {
   displayForm,
+  findAllAssociatedQuestions,
 };
 
