@@ -1,19 +1,17 @@
-const displayForms = require('../helper/displayForms');
-
-const displayFormsHandler = (request, response) => {
-  displayForms().then((allForms) => {
-    // console.log(allForms);
-    response({
-      code: 200,
-      allForms,
-    });
-  }).catch(() => response({
-    code: 500,
-  }));
-};
+const displayFormsLib = require('../lib/displayFormsLib');
 
 module.exports = [{
   path: '/forms/display',
   method: 'GET',
-  handler: displayFormsHandler,
+  handler(request, response) {
+    return displayFormsLib.displayForms().then(result => response({
+      code: 200,
+      data: result,
+    }))
+      .catch(() => response({
+        code: 500,
+        data: [],
+        error: 'Could not fetch forms',
+      }));
+  },
 }];

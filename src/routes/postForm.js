@@ -12,7 +12,8 @@ module.exports = [{
     }))
       .catch(() => response({
         code: 500,
-        data: {},
+        data: [],
+        error: 'Could not create form',
       }));
   },
   config: {

@@ -28,6 +28,10 @@ module.exports = (sequelize, DataTypes) => {
     where: options,
   });
 
+  forms.findOneObject = options => forms.findOne({
+    where: options,
+  });
+
   forms.findAllObjectsOrder = order => forms.findAll({
     order,
   });

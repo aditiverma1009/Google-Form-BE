@@ -30,8 +30,12 @@ const optionMultipleQuestions = {
 };
 
 describe('Testcase for postForm server', () => {
-  beforeAll(done => Models.forms.destroyAllObjects().then(() => done()));
-  afterAll(done => Models.forms.destroyAllObjects().then(() => done()));
+  beforeAll(done => Models.forms.destroyAllObjects()
+    .then(() => Models.questions.destroyAllObjects()
+      .then(() => done())));
+  afterAll(done => Models.forms.destroyAllObjects()
+    .then(() => Models.questions.destroyAllObjects()
+      .then(() => done())));
 
   test('Test when there is incorrect type formTitle', (done) => {
     server.inject(optionIncorrectUsername, (response) => {
@@ -57,8 +61,12 @@ describe('Testcase for postForm server', () => {
 
 
 describe('Testcase for database entries during postForm', () => {
-  beforeAll(done => Models.forms.destroyAllObjects().then(() => done()));
-  afterAll(done => Models.forms.destroyAllObjects().then(() => done()));
+  beforeEach(done => Models.forms.destroyAllObjects()
+    .then(() => Models.questions.destroyAllObjects()
+      .then(() => done())));
+  afterEach(done => Models.forms.destroyAllObjects()
+    .then(() => Models.questions.destroyAllObjects()
+      .then(() => done())));
 
 
   test('Test for populating forms table', (done) => {

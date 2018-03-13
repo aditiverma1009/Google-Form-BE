@@ -1,4 +1,6 @@
 const postForm = require('./postForm');
+const getForms = require('./getForms');
+const getForm = require('./getForm');
 
 module.exports = [{
   path: '/',
@@ -6,5 +8,5 @@ module.exports = [{
   handler(request, response) {
     response('On root.');
   },
-}].concat(postForm);
+}].concat(postForm, getForms, getForm);
 
