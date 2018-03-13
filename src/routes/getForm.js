@@ -1,20 +1,19 @@
-const showFormFields = require('../helper/showFormFields');
-
-const showFormFieldsHandler = (request, response) => {
-  // console.log(request.query);
-  const { formid } = request.query;
-  showFormFields(formid).then((allQuestionsWithFormTitle) => {
-    response({
-      code: 200,
-      allQuestionsWithFormTitle,
-    });
-  }).catch(() => response({
-    code: 500,
-  }));
-};
+const displayFormLib = require('../lib/displayFormLib');
 
 module.exports = [{
-  path: '/form/showFormFields',
+  path: '/form/{formid}',
   method: 'GET',
-  handler: showFormFieldsHandler,
+  handler(request, response) {
+    console.log(request.params);
+    const { formid } = request.params;
+    return displayFormLib.displayForm(formid).then(result => response({
+      code: 200,
+      data: result,
+    }))
+      .catch(() => response({
+        code: 500,
+        data: [],
+        error: 'Could not fetch form fields',
+      }));
+  },
 }];
