@@ -14,15 +14,6 @@ module.exports = (sequelize, DataTypes) => {
         values: ['date', 'shortans', 'para'],
       },
     },
-    {
-      scopes: {
-        allAnswers: {
-          include: [
-            { model: Models.answers },
-          ],
-        },
-      },
-    },
     {},
   );
 
