@@ -17,8 +17,8 @@ describe('Test for FormFields Response when there is one forms in the table', ()
       .then(() => done())));
 
   test('Responds with 200 code', testdone => server.inject(option1, (resp) => {
+    console.log(resp.result.data);
     expect(resp.result.code).toBe(200);
-    console.log(resp.result.data[0].dataValues.questions[0].dataValues);
     expect(resp.result.data[0].dataValues.formtitle).toBe('how is your friend1');
     expect(resp.result.data[0].dataValues.questions.length).toBe(2);
     expect(resp.result.data[0].dataValues.questions[0].dataValues.questext).toBe('how are you');
